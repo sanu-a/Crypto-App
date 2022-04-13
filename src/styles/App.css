@@ -1,0 +1,98 @@
+.coin-app{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.coin-input{
+    width: 350px;
+    border-radius: 7px;
+    height: 20px;
+    padding:4px 20px;
+    margin-bottom: 30px;
+}
+.row{
+    margin: 15px;
+    display: flex;
+}
+#name{
+    margin-left: 30px;
+}
+#container{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    position: relative;
+}
+.img{
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    position: relative;
+    top: 0px;
+}
+.market-cap{
+    margin-left: 15px;
+}
+span{
+    width: 150px;
+}
+.name-container, #name{
+    width: 250px;
+}
+.symbol{
+    margin: 0px 15px;
+}
+.r-name{
+    color: gray;
+}
+.center{
+    position: relative;
+    top: 4px;
+}
+.details{
+    background-color: rgb(12, 66, 113);
+    color: white;
+    padding: 7px 30px;
+    margin: 5px 35px;
+    border-radius: 10px;
+    font-family:'Courier New', Courier, monospace
+    
+}
+.detail-row{
+    margin: 10px 2px;
+}
+@media only screen and (max-width: 1200px) {
+    .name-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .r-name{
+        margin-left: 30px;
+    }
+  }
+  @media only screen and (max-width: 900px) {
+    .market-cap{
+        display: none;
+    }
+    .name-container, #name{
+        width: 200px;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    .high-low{
+        display: none;
+    }
+    span{
+        width:70px
+    }
+    .name-container, #name{
+        width: 150px;
+    }
+    .change{
+        margin-left: 20px;
+    }
+    .coin-input{
+        width: 200px;
+    }
+  }
