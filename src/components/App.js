@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import "../styles/App.css";
 import axios from "axios";
 import Coin from "./Coin";
+import Pagination from "./Pagination";
 
 function App() {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
   const [showCoins, setShowCoins] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const coinsPerPage = 10;
 
   useEffect(() => {
     axios
@@ -19,9 +22,20 @@ function App() {
       });
   }, []);
 
-  const filteredCoins = coins.filter((coin) =>
-    coin.name.toLowerCase().includes(search.toLowerCase())
+  const filteredCoins = coins.filter(
+    (coin) =>
+      coin.name.toLowerCase().includes(search.toLowerCase()) ||
+      coin.symbol.toLowerCase().includes(search.toLowerCase())
   );
+
+  const indexOfLastCoin = currentPage * coinsPerPage;
+  const indexOfFirstCoin = indexOfLastCoin - coinsPerPage;
+  const currentCoins = filteredCoins.slice(indexOfFirstCoin, indexOfLastCoin);
+
+  const pageNumber = [];
+  for (let i = 1; i <= Math.ceil(filteredCoins.length / coinsPerPage); i++) {
+    pageNumber.push(i);
+  }
 
   return (
     <div className="coin-app">
@@ -37,6 +51,11 @@ function App() {
         />
       </div>
       {showCoins ? (
+        <h2 className="page-number">
+          Showing Page {currentPage} of {pageNumber.length}
+        </h2>
+      ) : null}
+      {showCoins ? (
         <div className="row">
           <span id="name" className="name">
             Name
@@ -49,9 +68,10 @@ function App() {
       ) : (
         <h1>Loading Crypto Coins...</h1>
       )}
-      {filteredCoins.map((e) => {
+      {currentCoins.map((e) => {
         return <Coin key={e.id} e={e} />;
       })}
+      <Pagination setCurrentPage={setCurrentPage} pageNumber={pageNumber} />
     </div>
   );
 }

@@ -15,6 +15,9 @@
     margin: 15px;
     display: flex;
 }
+.pointer{
+    cursor: pointer;
+}
 #name{
     margin-left: 30px;
 }
@@ -61,6 +64,18 @@ span{
 }
 .detail-row{
     margin: 10px 2px;
+}
+nav button {
+    cursor: pointer;
+    margin-left:3px;
+    margin-right :3px;
+    margin-bottom: 35px;
+    width:35px;
+    height: 30px;
+    border-radius: 5px;
+}
+.page-number{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 @media only screen and (max-width: 1200px) {
     .name-container{

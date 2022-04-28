@@ -5,7 +5,7 @@ const Coin = ({ e }) => {
   return (
     <div id="container">
       <div
-        className="row"
+        className="row pointer"
         onClick={() => {
           setDetails(!details);
         }}
